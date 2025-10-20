@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" rx="30" fill="#1e40af"/>
+    <path d="M 30 80 Q 60 50, 100 60 T 170 80" fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
+    <path d="M 45 80 Q 70 60, 100 65 T 155 80" fill="none" stroke="white" stroke-width="3" opacity="0.5"/>
+    <path d="M 60 80 Q 80 68, 100 70 T 140 80" fill="none" stroke="white" stroke-width="3.5" opacity="0.8"/>
+    <path d="M 75 80 Q 87 74, 100 75 T 125 80" fill="none" stroke="white" stroke-width="4" opacity="1"/>
+    <circle cx="100" cy="73" r="5" fill="#ef4444"/>
+    <circle cx="100" cy="73" r="2.5" fill="white"/>
+    <text x="100" y="130" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">PLANARIS</text>
+    <text x="100" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" letter-spacing="2" opacity="0.8">TOPOGRAFÍA</text>
+</svg>
