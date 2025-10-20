@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relevamientos 3D | Planaris</title>
+    <meta name="description" content="Captura tridimensional con tecnología láser y drones para modelos digitales de alta precisión">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1e3c72;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+        }
+
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .service-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-description p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .tech-section {
+            background: #f8f9fa;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-card h4 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .advantages-section {
+            background: white;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .advantage-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .advantage-item h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .use-cases-section {
+            background: #f8f9fa;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .use-case-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .use-case-card h4 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .use-case-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .use-case-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .use-case-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1e3c72;
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+    <a href="index.html">
+        <img src="planaris-logo-horizontal.svg" alt="Planaris Logo" style="height: 50px; width: auto;">
+    </a>
+</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>🎯 Relevamientos 3D</h1>
+            <p>Tecnología de última generación para captura tridimensional de alta precisión</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="service-content">
+                <div class="service-image">
+                    🎯
+                </div>
+                <div class="service-description">
+                    <h2>Captura Tridimensional Avanzada</h2>
+                    <p>Los relevamientos 3D utilizan tecnología láser y fotogrametría aérea para crear modelos digitales tridimensionales de terrenos, edificaciones e infraestructuras con precisión milimétrica.</p>
+                    <p>Esta tecnología revoluciona la forma de documentar proyectos, permitiendo obtener millones de puntos de medición en minutos, algo imposible con métodos tradicionales.</p>
+                    <p>Los modelos 3D generados pueden visualizarse, analizarse y compartirse digitalmente, facilitando la toma de decisiones y la planificación de proyectos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="container">
+            <h2>Nuestras Tecnologías</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">🚁</div>
+                    <h4>Drones con Fotogrametría</h4>
+                    <p>Captura aérea de imágenes de alta resolución que se procesan para generar modelos 3D detallados de grandes extensiones de terreno.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📡</div>
+                    <h4>Escáner Láser Terrestre</h4>
+                    <p>Tecnología LiDAR que captura millones de puntos por segundo, ideal para edificaciones, estructuras e instalaciones industriales.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">💻</div>
+                    <h4>Software Especializado</h4>
+                    <p>Herramientas profesionales para procesamiento de nubes de puntos y generación de modelos BIM, CAD y visualizaciones 3D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages-section">
+        <div class="container">
+            <h2>Ventajas del Relevamiento 3D</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-icon">⚡</div>
+                    <h4>Rapidez</h4>
+                    <p>Captura masiva de datos en minutos, reduciendo tiempos de campo significativamente.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">🎯</div>
+                    <h4>Precisión</h4>
+                    <p>Exactitud de milímetros en cada punto medido, superando métodos tradicionales.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">💾</div>
+                    <h4>Documentación Completa</h4>
+                    <p>Registro digital permanente que puede consultarse indefinidamente sin volver al campo.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">🔍</div>
+                    <h4>Detalle Excepcional</h4>
+                    <p>Captura cada elemento, textura y detalle del objeto o terreno relevado.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">🛡️</div>
+                    <h4>Seguridad</h4>
+                    <p>Acceso a zonas peligrosas o de difícil alcance sin riesgo para el personal.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">📊</div>
+                    <h4>Análisis Avanzado</h4>
+                    <p>Mediciones, comparaciones y estudios directamente sobre el modelo digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases-section">
+        <div class="container">
+            <h2>Aplicaciones del Relevamiento 3D</h2>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <h4>🏗️ Construcción e Ingeniería</h4>
+                    <ul>
+                        <li>As-built (estado actual) de obras</li>
+                        <li>Control de avance de construcción</li>
+                        <li>Detección de interferencias</li>
+                        <li>Planificación de reformas</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>🏛️ Patrimonio y Arquitectura</h4>
+                    <ul>
+                        <li>Documentación de edificios históricos</li>
+                        <li>Conservación patrimonial</li>
+                        <li>Restauración de fachadas</li>
+                        <li>Modelos para museos virtuales</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>🏭 Industria</h4>
+                    <ul>
+                        <li>Plantas industriales completas</li>
+                        <li>Tuberías y cañerías</li>
+                        <li>Instalaciones eléctricas</li>
+                        <li>Mantenimiento predictivo</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>⛏️ Minería y Canteras</h4>
+                    <ul>
+                        <li>Medición de volúmenes extraídos</li>
+                        <li>Control de stockpiles</li>
+                        <li>Planificación de voladuras</li>
+                        <li>Estudios de estabilidad</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>🎬 Medios y Entretenimiento</h4>
+                    <ul>
+                        <li>Escenarios virtuales para cine</li>
+                        <li>Videojuegos y realidad virtual</li>
+                        <li>Publicidad y marketing</li>
+                        <li>Tours virtuales inmobiliarios</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>🌳 Medioambiente</h4>
+                    <ul>
+                        <li>Estudios de impacto ambiental</li>
+                        <li>Monitoreo de erosión</li>
+                        <li>Análisis de vegetación</li>
+                        <li>Gestión de cuencas hidrográficas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Querés Implementar Tecnología 3D en tu Proyecto?</h2>
+            <p>Descubrí cómo el relevamiento 3D puede transformar la forma de trabajar</p>
+            <a href="index.html#contacto" class="cta-button">Consultar Ahora</a>
+        </div>
+    </section>
+
+    <footer>
+    <p>&copy; 2025 <strong>Planaris</strong> - Servicios de Topografía y Agrimensura</p>
+    <p>
+        <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a> | 
+        <a href="tel:+542214540702">+54 221 454-0702</a>
+    </p>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

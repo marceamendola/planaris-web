@@ -19,16 +19,17 @@
         }
 
         /* Header y Navegación */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+header {
+    background: #ffffff;
+    color: #1e293b;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e2e8f0;
+}
 
         nav {
             max-width: 1200px;
@@ -40,10 +41,22 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
 
         nav ul {
             display: flex;
@@ -51,35 +64,35 @@
             gap: 2rem;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            font-weight: 500;
-        }
+nav a {
+    color: #1e293b;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
 
-        nav a:hover {
-            opacity: 0.8;
-        }
+nav a:hover {
+    color: #3b82f6;
+}
 
         /* Menú móvil */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #1e293b;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
         /* Sección Hero */
         .hero {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 150px 2rem 100px;
-            text-align: center;
-            margin-top: 60px;
-        }
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 150px 2rem 100px;
+    text-align: center;
+    margin-top: 70px;
+}
 
         .hero h1 {
             font-size: 3rem;
@@ -287,6 +300,22 @@
         }
 
         .form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2a5298;
+}
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
@@ -326,9 +355,42 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .logo img {
+        height: 35px;
+    }
             .menu-toggle {
-                display: block;
-            }
+        display: block;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 0.5rem 2rem;
+    }
+
+    .hero {
+        margin-top: 70px;
+    
+    }
 
             nav ul {
                 display: none;
@@ -380,7 +442,11 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">📐 PLANARIS</div>
+            <div class="logo">
+    <a href="#inicio">
+        <img src="planaris-logo-horizontal.svg" alt="Planaris Logo" style="height: 50px; width: auto;">
+    </a>
+</div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
@@ -406,26 +472,37 @@
         <div class="container">
             <h2>Nuestros Servicios</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🗺️</div>
-                    <h3>Relevamientos Topográficos</h3>
-                    <p>Realizamos mediciones precisas del terreno, determinando las características físicas, límites y desniveles para cualquier tipo de proyecto de construcción o desarrollo.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📏</div>
-                    <h3>Servicios de Agrimensura</h3>
-                    <p>Mensuras, subdivisiones, unificaciones y todos los trámites relacionados con la delimitación legal de propiedades ante organismos oficiales.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Cubicaciones</h3>
-                    <p>Cálculo preciso de volúmenes de tierra, movimientos de suelo y materiales para proyectos de construcción, excavación y obras civiles.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Relevamientos 3D</h3>
-                    <p>Tecnología de última generación para captura tridimensional del terreno, edificaciones e infraestructuras, generando modelos digitales de alta precisión.</p>
-                </div>
+                <a href="relevamientos-topograficos.html" style="text-decoration: none; color: inherit;">
+    <div class="service-card">
+        <div class="service-icon">🗺️</div>
+        <h3>Relevamientos Topográficos</h3>
+        <p>Realizamos mediciones precisas del terreno, determinando las características físicas, límites y desniveles para cualquier tipo de proyecto de construcción o desarrollo.</p>
+    </div>
+</a>
+
+<a href="servicios-agrimensura.html" style="text-decoration: none; color: inherit;">
+    <div class="service-card">
+        <div class="service-icon">📏</div>
+        <h3>Servicios de Agrimensura</h3>
+        <p>Mensuras, subdivisiones, unificaciones y todos los trámites relacionados con la delimitación legal de propiedades ante organismos oficiales.</p>
+    </div>
+</a>
+
+<a href="cubicaciones.html" style="text-decoration: none; color: inherit;">
+    <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Cubicaciones</h3>
+        <p>Cálculo preciso de volúmenes de tierra, movimientos de suelo y materiales para proyectos de construcción, excavación y obras civiles.</p>
+    </div>
+</a>
+
+<a href="relevamientos-3d.html" style="text-decoration: none; color: inherit;">
+    <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Relevamientos 3D</h3>
+        <p>Tecnología de última generación para captura tridimensional del terreno, edificaciones e infraestructuras, generando modelos digitales de alta precisión.</p>
+    </div>
+</a>
             </div>
         </div>
     </section>
@@ -482,62 +559,85 @@
         <div class="container">
             <h2>Contacto</h2>
             <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📧</div>
-                        <div class="contact-item-text">
-                            <strong>Email</strong><br>
-                            <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">🌐</div>
-                        <div class="contact-item-text">
-                            <strong>Web</strong><br>
-                            <a href="https://www.planaris.com.ar" target="_blank">www.planaris.com.ar</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
-                        <div class="contact-item-text">
-                            <strong>Ubicación</strong><br>
-                            Argentina
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Envíanos tu consulta</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="nombre">Nombre Completo</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono">
-                        </div>
-                        <div class="form-group">
-                            <label for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button">Enviar Consulta</button>
-                    </form>
-                </div>
+    <div class="contact-info">
+        <h3>Información de Contacto</h3>
+        <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div class="contact-item-text">
+                <strong>Email</strong><br>
+                <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a>
             </div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <div class="contact-item-text">
+                <strong>Teléfono</strong><br>
+                <a href="tel:+542214540702">+54 221 454-0702</a>
+            </div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+                <strong>Ubicación</strong><br>
+                La Plata, Buenos Aires, Argentina
+            </div>
+        </div>
+        
+        <!-- Mapa de Google -->
+        <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; height: 300px;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.8156837848844!2d-57.94694077592862!3d-34.93154302585571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU1JzUzLjYiUyA1N8KwNTYnNDkuMCJX!5e0!3m2!1ses!2sar!4v1234567890123!5m2!1ses!2sar" 
+                width="100%" 
+                height="300" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+    <form id="contactForm">
+    <div class="form-group">
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="servicio">Tipo de Servicio</label>
+        <select id="servicio" name="servicio" required>
+            <option value="">Seleccione un servicio...</option>
+            <option value="Relevamientos Topográficos">Relevamientos Topográficos</option>
+            <option value="Servicios de Agrimensura">Servicios de Agrimensura</option>
+            <option value="Cubicaciones">Cubicaciones</option>
+            <option value="Relevamientos 3D">Relevamientos 3D</option>
+            <option value="Consulta General">Consulta General</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono">
+    </div>
+    <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+    </div>
+    <button type="submit" class="cta-button">Enviar Consulta</button>
+</form>
+</div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 <strong>Planaris</strong> - Servicios de Topografía y Agrimensura</p>
-        <p><a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a> | <a href="https://www.planaris.com.ar">www.planaris.com.ar</a></p>
-    </footer>
-
+    <p>&copy; 2025 <strong>Planaris</strong> - Servicios de Topografía y Agrimensura</p>
+    <p>
+        <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a> | 
+        <a href="tel:+542214540702">+54 221 454-0702</a>
+    </p>
+</footer>
     <script>
         // Menú móvil
         function toggleMenu() {
@@ -561,25 +661,26 @@
         });
 
         // Manejo del formulario
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Obtener datos del formulario
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const telefono = document.getElementById('telefono').value;
-            const mensaje = document.getElementById('mensaje').value;
-            
-            // Crear mailto con los datos
-            const subject = 'Consulta desde planaris.com.ar';
-            const body = `Nombre: ${nombre}%0D%0AEmail: ${email}%0D%0ATeléfono: ${telefono}%0D%0A%0D%0AMensaje:%0D%0A${mensaje}`;
-            
-            // Abrir cliente de email
-            window.location.href = `mailto:info@planaris.com.ar?subject=${subject}&body=${body}`;
-            
-            // Resetear formulario
-            this.reset();
-        });
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Obtener datos del formulario
+    const nombre = document.getElementById('nombre').value;
+    const servicio = document.getElementById('servicio').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const mensaje = document.getElementById('mensaje').value;
+    
+    // Crear mailto con los datos
+    const subject = `Presupuesto - ${servicio}`;
+    const body = `Nombre: ${nombre}%0D%0AServicio: ${servicio}%0D%0AEmail: ${email}%0D%0ATeléfono: ${telefono}%0D%0A%0D%0AMensaje:%0D%0A${mensaje}`;
+    
+    // Abrir cliente de email
+    window.location.href = `mailto:info@planaris.com.ar?subject=${subject}&body=${body}`;
+    
+    // Resetear formulario
+    this.reset();
+});
     </script>
 </body>
 </html>

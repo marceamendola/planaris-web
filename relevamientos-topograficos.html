@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relevamientos Topográficos | Planaris</title>
+    <meta name="description" content="Servicios profesionales de relevamientos topográficos con tecnología de última generación">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header y Navegación */
+        header {
+    background: #ffffff;
+    color: #1e293b;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1e3c72;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+        }
+
+        /* Service Content */
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .service-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-description p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: #f8f9fa;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* Applications Section */
+        .applications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .application-item {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #2a5298;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .application-item h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1e3c72;
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+    <a href="index.html">
+        <img src="planaris-logo-horizontal.svg" alt="Planaris Logo" style="height: 50px; width: auto;">
+    </a>
+</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🗺️ Relevamientos Topográficos</h1>
+            <p>Mediciones precisas del terreno para el éxito de tu proyecto</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section>
+        <div class="container">
+            <div class="service-content">
+                <div class="service-image">
+                    🗺️
+                    <!-- Aquí irá tu imagen -->
+                </div>
+                <div class="service-description">
+                    <h2>¿Qué es un Relevamiento Topográfico?</h2>
+                    <p>El relevamiento topográfico es el proceso mediante el cual se realizan mediciones precisas de un terreno para determinar sus características físicas, límites, desniveles y elementos naturales o artificiales presentes.</p>
+                    <p>Utilizamos tecnología de última generación, incluyendo estaciones totales, GPS de alta precisión y drones, para garantizar resultados exactos y confiables.</p>
+                    <p>Cada relevamiento se entrega con planos detallados, coordenadas georreferenciadas y toda la documentación técnica necesaria para tu proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Beneficios de Nuestro Servicio</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Precisión Milimétrica</h4>
+                    <p>Equipos calibrados y metodologías certificadas que garantizan la máxima exactitud en cada medición.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Entrega Rápida</h4>
+                    <p>Plazos de entrega optimizados para que puedas avanzar con tu proyecto sin demoras.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h4>Documentación Completa</h4>
+                    <p>Planos, planillas de coordenadas y memorias descriptivas detalladas en formato digital e impreso.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h4>Asesoramiento Técnico</h4>
+                    <p>Te acompañamos en la interpretación de resultados y te asesoramos en las mejores decisiones para tu proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications -->
+    <section>
+        <div class="container">
+            <h2>Aplicaciones del Relevamiento Topográfico</h2>
+            <div class="applications-list">
+                <div class="application-item">
+                    <h4>🏗️ Construcción</h4>
+                    <p>Planificación y replanteo de obras civiles, edificios y estructuras.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🏘️ Desarrollos Inmobiliarios</h4>
+                    <p>Loteos, urbanizaciones y fraccionamientos de terrenos.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🛣️ Obras Viales</h4>
+                    <p>Diseño de caminos, calles y sistemas de drenaje.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🌾 Proyectos Agrícolas</h4>
+                    <p>Nivelación de campos, sistemas de riego y drenaje.</p>
+                </div>
+                <div class="application-item">
+                    <h4>⚡ Infraestructura</h4>
+                    <p>Tendido de redes eléctricas, gas y telecomunicaciones.</p>
+                </div>
+                <div class="application-item">
+                    <h4>🏞️ Estudios Ambientales</h4>
+                    <p>Relevamientos para evaluaciones de impacto ambiental.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Necesitás un Relevamiento Topográfico?</h2>
+            <p>Contactanos hoy y recibí una cotización personalizada para tu proyecto</p>
+            <a href="index.html#contacto" class="cta-button">Solicitar Presupuesto</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+    <p>&copy; 2025 <strong>Planaris</strong> - Servicios de Topografía y Agrimensura</p>
+    <p>
+        <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a> | 
+        <a href="tel:+542214540702">+54 221 454-0702</a>
+    </p>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
