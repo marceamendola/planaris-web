@@ -5,436 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planaris | Servicios de Topografía y Agrimensura</title>
     <meta name="description" content="Planaris - Servicios profesionales de topografía, agrimensura, cubicaciones y relevamientos 3D en Argentina">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header y Navegación */
-header {
-    background: #ffffff;
-    color: #1e293b;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    border-bottom: 1px solid #e2e8f0;
-}
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-    display: flex;
-    align-items: center;
-    height: auto;
-}
-
-.logo a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.logo img {
-    height: 50px;
-    width: auto;
-    display: block;
-}
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-nav a {
-    color: #1e293b;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 500;
-}
-
-nav a:hover {
-    color: #3b82f6;
-}
-
-        /* Menú móvil */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #1e293b;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-        /* Sección Hero */
-        .hero {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    padding: 150px 2rem 100px;
-    text-align: center;
-    margin-top: 70px;
-}
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            background: #ff6b35;
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
-        }
-
-        /* Contenedor general */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e3c72;
-        }
-
-        /* Servicios */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
+        /* Estilos específicos para tarjetas con imagen de fondo */
+        .service-card-image {
+            position: relative;
+            height: 300px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
-        .service-card:hover {
+        .service-card-image:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .service-card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--color-secondary);
         }
 
-        .service-card h3 {
-            color: #1e3c72;
-            margin-bottom: 1rem;
+        .service-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(11,19,32,0.3) 0%, rgba(11,19,32,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+
+        .service-card-title {
+            color: white;
             font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .service-card p {
-            line-height: 1.7;
-        }
-
-        /* Características */
-        #caracteristicas {
+        /* Sección de equipamiento */
+        .equipment-section {
             background: #f8f9fa;
         }
 
-        .features-grid {
+        .equipment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .feature-item {
-            text-align: center;
-            padding: 1.5rem;
+        .equipment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--color-accent);
+            transition: transform 0.3s;
         }
 
-        .feature-icon {
+        .equipment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .equipment-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .feature-item h3 {
-            color: #1e3c72;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Sobre Nosotros */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            color: #1e3c72;
+        .equipment-card h4 {
+            color: var(--color-primary);
             margin-bottom: 1rem;
-            font-size: 1.8rem;
+            font-size: 1.3rem;
         }
 
-        .about-text p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 5rem;
-        }
-
-        /* Contacto */
-        #contacto {
-            background: #f8f9fa;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .contact-info h3 {
-            color: #1e3c72;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            gap: 1rem;
-        }
-
-        .contact-item-icon {
-            font-size: 1.5rem;
-            color: #2a5298;
-        }
-
-        .contact-item-text a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .contact-item-text a:hover {
-            color: #2a5298;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
+        .equipment-item {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1e3c72;
+        .equipment-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .equipment-name {
             font-weight: 600;
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
         }
 
-        .form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
-    font-family: inherit;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2a5298;
-}
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2a5298;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        /* Footer */
-        footer {
-            background: #1e3c72;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo img {
-        height: 35px;
-    }
-            .menu-toggle {
-        display: block;
-    }
-
-    .logo img {
-        height: 40px;
-    }
-
-    nav ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #ffffff;
-        flex-direction: column;
-        padding: 1rem 0;
-        gap: 0;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    nav ul li {
-        padding: 0.5rem 2rem;
-    }
-
-    .hero {
-        margin-top: 70px;
-    
-    }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: #1e3c72;
-                flex-direction: column;
-                padding: 1rem 0;
-                gap: 0;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                padding: 0.5rem 2rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+        .equipment-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
         }
     </style>
 </head>
@@ -443,16 +115,17 @@ nav a:hover {
     <header>
         <nav>
             <div class="logo">
-    <a href="#inicio">
-        <img src="planaris-logo-horizontal.svg" alt="Planaris Logo" style="height: 50px; width: auto;">
-    </a>
-</div>
+                <a href="#inicio">
+                    <img src="images/planaris-logo-horizontal.svg" alt="Planaris Logo">
+                </a>
+            </div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#caracteristicas">Características</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#equipamiento">Equipamiento</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -467,42 +140,111 @@ nav a:hover {
         </div>
     </section>
 
+    <!-- Sobre Nosotros -->
+    <section id="nosotros">
+        <div class="container">
+            <h2>Sobre Planaris</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Experiencia y Compromiso</h3>
+                    <p>En Planaris somos especialistas en servicios de topografía y agrimensura, comprometidos con la excelencia técnica y la satisfacción de nuestros clientes.</p>
+                    <p>Contamos con un equipo de profesionales altamente calificados y equipamiento de última generación que nos permite ofrecer soluciones precisas y confiables para todo tipo de proyectos.</p>
+                    <p>Nuestra misión es brindar servicios de calidad que contribuyan al éxito de cada obra, desarrollo inmobiliario o proyecto de construcción.</p>
+                </div>
+                <div class="about-image">
+                    📐
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Servicios -->
     <section id="servicios">
         <div class="container">
             <h2>Nuestros Servicios</h2>
             <div class="services-grid">
-                <a href="relevamientos-topograficos.html" style="text-decoration: none; color: inherit;">
-    <div class="service-card">
-        <div class="service-icon">🗺️</div>
-        <h3>Relevamientos Topográficos</h3>
-        <p>Realizamos mediciones precisas del terreno, determinando las características físicas, límites y desniveles para cualquier tipo de proyecto de construcción o desarrollo.</p>
-    </div>
-</a>
+                <a href="relevamientos.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/relevamientos.jpg');">
+                            <!-- Si no hay imagen, se verá el color de fondo -->
+                        </div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Relevamientos Planialtimétricos</h3>
+                        </div>
+                    </div>
+                </a>
 
-<a href="servicios-agrimensura.html" style="text-decoration: none; color: inherit;">
-    <div class="service-card">
-        <div class="service-icon">📏</div>
-        <h3>Servicios de Agrimensura</h3>
-        <p>Mensuras, subdivisiones, unificaciones y todos los trámites relacionados con la delimitación legal de propiedades ante organismos oficiales.</p>
-    </div>
-</a>
+                <a href="replanteos.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/replanteos.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Replanteos de Obra</h3>
+                        </div>
+                    </div>
+                </a>
 
-<a href="cubicaciones.html" style="text-decoration: none; color: inherit;">
-    <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h3>Cubicaciones</h3>
-        <p>Cálculo preciso de volúmenes de tierra, movimientos de suelo y materiales para proyectos de construcción, excavación y obras civiles.</p>
-    </div>
-</a>
+                <a href="nivelacion.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/nivelacion.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Nivelaciones y Control Altimétrico</h3>
+                        </div>
+                    </div>
+                </a>
 
-<a href="relevamientos-3d.html" style="text-decoration: none; color: inherit;">
-    <div class="service-card">
-        <div class="service-icon">🎯</div>
-        <h3>Relevamientos 3D</h3>
-        <p>Tecnología de última generación para captura tridimensional del terreno, edificaciones e infraestructuras, generando modelos digitales de alta precisión.</p>
-    </div>
-</a>
+                <a href="lidar.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/lidar.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Relevamientos LiDAR y Escaneo 3D</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="drone.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/drone.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Fotogrametría Aérea con Drone</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="modelado-3d.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/modelado-3d.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Modelado 3D y Entregables Digitales</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="industrial.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/industrial.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Topografía Industrial</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="minero.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/minero.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Topografía Minera</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="asistencia.html" style="text-decoration: none;">
+                    <div class="service-card-image">
+                        <div class="service-card-background" style="background-image: url('images/asistencia.jpg');"></div>
+                        <div class="service-card-overlay">
+                            <h3 class="service-card-title">Asistencia Técnica y Consultoría</h3>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -513,7 +255,7 @@ nav a:hover {
             <h2>¿Por qué elegirnos?</h2>
             <div class="features-grid">
                 <div class="feature-item">
-                    <div class="feature-icon">✓</div>
+                    <div class="feature-icon">✔</div>
                     <h3>Precisión Garantizada</h3>
                     <p>Equipamiento de última generación y metodologías certificadas</p>
                 </div>
@@ -536,151 +278,166 @@ nav a:hover {
         </div>
     </section>
 
-    <!-- Sobre Nosotros -->
-    <section id="nosotros">
+    <!-- Equipamiento -->
+    <section id="equipamiento" class="equipment-section">
         <div class="container">
-            <h2>Sobre Planaris</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Experiencia y Compromiso</h3>
-                    <p>En Planaris somos especialistas en servicios de topografía y agrimensura, comprometidos con la excelencia técnica y la satisfacción de nuestros clientes.</p>
-                    <p>Contamos con un equipo de profesionales altamente calificados y equipamiento de última generación que nos permite ofrecer soluciones precisas y confiables para todo tipo de proyectos.</p>
-                    <p>Nuestra misión es brindar servicios de calidad que contribuyan al éxito de cada obra, desarrollo inmobiliario o proyecto de construcción.</p>
+            <h2>Nuestro Equipamiento</h2>
+            <div class="equipment-grid">
+                <div class="equipment-card">
+                    <div class="equipment-icon">📐</div>
+                    <h4>Topografía Clásica</h4>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Estación Total Trimble C5 (5")</div>
+                        <div class="equipment-description">Precisión y confiabilidad para obras civiles, estructuras y relevamientos de detalle.</div>
+                    </div>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Estación Total Trimble S3 (2")</div>
+                        <div class="equipment-description">Alta exactitud angular, ideal para controles industriales y alineaciones estructurales.</div>
+                    </div>
                 </div>
-                <div class="about-image">
-                    📐
+
+                <div class="equipment-card">
+                    <div class="equipment-icon">🛰️</div>
+                    <h4>Geodesia y Posicionamiento</h4>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Receptor GNSS Trimble R4 con radio externa (RTK)</div>
+                        <div class="equipment-description">Posicionamiento en tiempo real con precisión centimétrica. Perfecto para trabajos extensos, vialidad o relevamientos de gran escala.</div>
+                    </div>
+                </div>
+
+                <div class="equipment-card">
+                    <div class="equipment-icon">🎯</div>
+                    <h4>Escaneo 3D y LiDAR</h4>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Sistema LiDAR SLAM JFD Trion P1 con RTK</div>
+                        <div class="equipment-description">Escáner móvil para relevamientos 3D rápidos y precisos. Combina SLAM + RTK para obtener nubes de puntos georreferenciadas en interiores o exteriores.</div>
+                    </div>
+                </div>
+
+                <div class="equipment-card">
+                    <div class="equipment-icon">🚁</div>
+                    <h4>Fotogrametría Aérea</h4>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Drone DJI Mavic Air</div>
+                        <div class="equipment-description">Captura de imágenes aéreas de alta resolución para generar ortomosaicos, modelos 3D y nubes de puntos. Procesamiento con Metashape Pro para integración con relevamientos terrestres.</div>
+                    </div>
+                </div>
+
+                <div class="equipment-card">
+                    <div class="equipment-icon">📏</div>
+                    <h4>Nivelaciones y Control</h4>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Nivel Óptico Digital Trimble</div>
+                        <div class="equipment-description">Lectura automática para nivelaciones de precisión en obras e infraestructura.</div>
+                    </div>
+                    
+                    <div class="equipment-item">
+                        <div class="equipment-name">Nivel Óptico Topcon 32x</div>
+                        <div class="equipment-description">Herramienta confiable para nivelaciones clásicas y control altimétrico de campo.</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Contacto -->
     <section id="contacto">
         <div class="container">
             <h2>Contacto</h2>
             <div class="contact-container">
-    <div class="contact-info">
-        <h3>Información de Contacto</h3>
-        <div class="contact-item">
-            <div class="contact-item-icon">📧</div>
-            <div class="contact-item-text">
-                <strong>Email</strong><br>
-                <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a>
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div class="contact-item-text">
+                            <strong>Email</strong><br>
+                            <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+                        <div class="contact-item-text">
+                            <strong>Teléfono</strong><br>
+                            <a href="tel:+542214540702">+54 221 454-0702</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <strong>Ubicación</strong><br>
+                            La Plata, Buenos Aires, Argentina
+                        </div>
+                    </div>
+                    
+                    <!-- Mapa de Google -->
+                    <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; height: 300px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.8156837848844!2d-57.94694077592862!3d-34.93154302585571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU1JzUzLjYiUyA1N8KwNTYnNDkuMCJX!5e0!3m2!1ses!2sar!4v1234567890123!5m2!1ses!2sar" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="servicio">Tipo de Servicio</label>
+                        <select id="servicio" name="servicio" required>
+                            <option value="">Seleccione un servicio...</option>
+                            <option value="Relevamientos Planialtimétricos">Relevamientos Planialtimétricos</option>
+                            <option value="Replanteos de Obra">Replanteos de Obra</option>
+                            <option value="Nivelaciones y Control Altimétrico">Nivelaciones y Control Altimétrico</option>
+                            <option value="Relevamientos LiDAR y Escaneo 3D">Relevamientos LiDAR y Escaneo 3D</option>
+                            <option value="Fotogrametría Aérea con Drone">Fotogrametría Aérea con Drone</option>
+                            <option value="Modelado 3D y Entregables Digitales">Modelado 3D y Entregables Digitales</option>
+                            <option value="Topografía Industrial">Topografía Industrial</option>
+                            <option value="Topografía Minera">Topografía Minera</option>
+                            <option value="Asistencia Técnica y Consultoría">Asistencia Técnica y Consultoría</option>
+                            <option value="Consulta General">Consulta General</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar Consulta</button>
+                </form>
             </div>
-        </div>
-        <div class="contact-item">
-            <div class="contact-item-icon">📱</div>
-            <div class="contact-item-text">
-                <strong>Teléfono</strong><br>
-                <a href="tel:+542214540702">+54 221 454-0702</a>
-            </div>
-        </div>
-        <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div class="contact-item-text">
-                <strong>Ubicación</strong><br>
-                La Plata, Buenos Aires, Argentina
-            </div>
-        </div>
-        
-        <!-- Mapa de Google -->
-        <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; height: 300px;">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.8156837848844!2d-57.94694077592862!3d-34.93154302585571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU1JzUzLjYiUyA1N8KwNTYnNDkuMCJX!5e0!3m2!1ses!2sar!4v1234567890123!5m2!1ses!2sar" 
-                width="100%" 
-                height="300" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </div>
-    <form id="contactForm">
-    <div class="form-group">
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" id="nombre" name="nombre" required>
-    </div>
-    <div class="form-group">
-        <label for="servicio">Tipo de Servicio</label>
-        <select id="servicio" name="servicio" required>
-            <option value="">Seleccione un servicio...</option>
-            <option value="Relevamientos Topográficos">Relevamientos Topográficos</option>
-            <option value="Servicios de Agrimensura">Servicios de Agrimensura</option>
-            <option value="Cubicaciones">Cubicaciones</option>
-            <option value="Relevamientos 3D">Relevamientos 3D</option>
-            <option value="Consulta General">Consulta General</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono">
-    </div>
-    <div class="form-group">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" required></textarea>
-    </div>
-    <button type="submit" class="cta-button">Enviar Consulta</button>
-</form>
-</div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-    <p>&copy; 2025 <strong>Planaris</strong> - Servicios de Topografía y Agrimensura</p>
-    <p>
-        <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a> | 
-        <a href="tel:+542214540702">+54 221 454-0702</a>
-    </p>
-</footer>
-    <script>
-        // Menú móvil
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
+        <p>&copy; 2025 <strong>Planaris</strong> - Servicios de Topografía y Agrimensura</p>
+        <p>
+            <a href="mailto:info@planaris.com.ar">info@planaris.com.ar</a> | 
+            <a href="tel:+542214540702">+54 221 454-0702</a>
+        </p>
+    </footer>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Cerrar menú móvil después de click
-                    document.getElementById('navMenu').classList.remove('active');
-                }
-            });
-        });
-
-        // Manejo del formulario
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Obtener datos del formulario
-    const nombre = document.getElementById('nombre').value;
-    const servicio = document.getElementById('servicio').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const mensaje = document.getElementById('mensaje').value;
-    
-    // Crear mailto con los datos
-    const subject = `Presupuesto - ${servicio}`;
-    const body = `Nombre: ${nombre}%0D%0AServicio: ${servicio}%0D%0AEmail: ${email}%0D%0ATeléfono: ${telefono}%0D%0A%0D%0AMensaje:%0D%0A${mensaje}`;
-    
-    // Abrir cliente de email
-    window.location.href = `mailto:info@planaris.com.ar?subject=${subject}&body=${body}`;
-    
-    // Resetear formulario
-    this.reset();
-});
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
